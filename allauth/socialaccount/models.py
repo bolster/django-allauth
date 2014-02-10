@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import json
-
 from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.contrib.auth import authenticate
@@ -24,6 +22,7 @@ from .fields import JSONField
 
 
 class SocialAppManager(models.Manager):
+
     def get_current(self, provider):
         site = Site.objects.get_current()
         return self.get(sites__id=site.id,
@@ -122,6 +121,7 @@ class SocialToken(models.Model):
 
 
 class SocialLogin(object):
+
     """
     Represents a social user that is in the process of being logged
     in. This consists of the following information:
